@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model CoreSkillsApp.Models.Task
+
+@{
+    ViewData["Title"] = "Delete Task";
+}
+
+<h1>Delete Task</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>@Model.TaskDescription</h4>
+    <hr />
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="TaskId" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

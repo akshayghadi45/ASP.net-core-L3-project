@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<CoreSkillsApp.Models.Task>
+
+@{
+    ViewData["Title"] = "Tasks";
+}
+
+<h1>Tasks</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Task</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Task Description</th>
+            <th>Start Date</th>
+            <th>Expected Closure</th>
+            <th>Assigned To</th>
+            <th>Completed</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TaskDescription</td>
+                <td>@item.StartDate.ToShortDateString()</td>
+                <td>@item.ExpectedClosureDate.ToShortDateString()</td>
+                <td>@item.AssignedTo</td>
+                <td>@(item.CompletionStatus ? "Yes" : "No")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TaskId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.TaskId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
